@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html layout:decorate="~{common/user_layout}"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User|Wishlist</title>
+</head>
+<body>
+
+<div class="p-3" layout:fragment="content">
+
+    <section class="content">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Wishlist</h3>
+                    </div>
+
+                    <div class="card-body table-responsive p-0">
+                        <table class="table table-hover text-nowrap">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Date</th>
+                                <th>Price</th>
+                                <th>Description</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="item : ${wishlistUserResponse?.items}">
+                                <td th:text="${item?.event.id}"></td>
+                                <td th:text="${item?.event.eventName}"></td>
+                                <td th:text="${item?.event.eventDate}"></td>
+                                <td >$<span class="tag tag-success" th:text="${item?.event.ticketPrice}"></span></td>
+                                <td th:text="${item?.event.description}"></td>
+                                <td>
+                                    <a class="btn btn-sm btn-success" th:href="@{/events/{eventId}(eventId=${item?.event.id})}">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a class="btn btn-sm btn-outline-danger" th:href="@{/user/events/remove/wishlist/{eventId}(eventId=${item?.event.id})}">
+                                        <i class="fas fa-trash text-primary"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<th:block layout:fragment="script">
+    <script>
+        console.log("Home Page");
+
+    </script>
+</th:block>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html layout:decorate="~{common/admin_layout}"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+</head>
+<body>
+
+<div class="p-3" layout:fragment="content">
+
+    <section class="content">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header bg-primary">
+                        <h3 class="card-title">Event Information</h3>
+                        <div class="card-tools">
+                        </div>
+                    </div>
+
+                    <div class="card-body p-2">
+                        <div class="event-image">
+                            <img th:src="${viewEvent.event.image.url}" style="height:300px;width:100%"/>
+                        </div>
+                        <div class="row px-2 py-2">
+                            <div class="col-12">
+                                <h6>Event Name : <span class="text-primary" th:text="${viewEvent.event.eventName}"></span></h6>
+                            </div>
+                        </div>
+                        <div class="row px-2 py-2">
+                            <div class="col-6">
+                                <h6>Ticket Price : $<span class="text-primary" th:text="${viewEvent.event.ticketPrice}"></span></h6>
+                            </div>
+                            <div class="col-6">
+                                <h6>Event Date : <span class="text-primary" th:text="${viewEvent.event.eventDate}"></span></h6>
+                            </div>
+                        </div>
+                        <div class="row px-2 py-2">
+                            <div class="col-6">
+                                <h6>Event Venue : <span class="text-primary" th:text="${viewEvent.event.venue}"></span></h6>
+                            </div>
+                            <div class="col-6">
+                                <h6>Event Location : <span class="text-primary" th:text="${viewEvent.event.location}"></span></h6>
+                            </div>
+                        </div>
+                        <div class="row px-2 py-2">
+                            <div class="col-6">
+                                <h6>Event Category : <span class="text-primary" th:text="${viewEvent.event.category}"></span></h6>
+                            </div>
+                            <div class="col-6">
+                                <h6>Event Description : <span class="text-primary" th:text="${viewEvent.event.description}"></span></h6>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<th:block layout:fragment="script">
+    <script>
+        console.log("Home Page");
+    </script>
+</th:block>
+
+</body>
+</html>

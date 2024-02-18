@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.utraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <title layout:title-pattern="$CONTENT_TITLE - $LAYOUT_TITLE">QwikTix</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <style th:replace="~{/common/style}"></style>
+
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+
+<div class="wrapper">
+
+    <div th:replace="~{/common/header}"></div>
+
+    <div th:replace="~{/common/admin_menu}"></div>
+
+    <div class="content-wrapper">
+        <div layout:fragment="content">
+
+        </div>
+    </div>
+
+    <div th:replace="~{/common/footer}"></div>
+
+    <div layout:fragment="script">
+
+    </div>
+
+    <div th:replace="~{/common/script}"></div>
+
+</div>
+
+</body>
+</html>

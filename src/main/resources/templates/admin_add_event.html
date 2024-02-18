@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html layout:decorate="~{common/admin_layout}"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+</head>
+<body>
+
+<div class="p-3" layout:fragment="content">
+
+    <section class="content">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Add New Event</h3>
+                        <div class="card-tools">
+
+                        </div>
+                    </div>
+
+                    <form th:action="@{~/admin/events/store}" method="post" th:object="${newEventRequest}" enctype="multipart/form-data">
+                        <div class="card-body">
+                            <div th:if="${errorMessage}" class="alert alert-danger" role="alert">
+                                <strong th:text="${errorMessage}"></strong>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="eventName">Event Name</label>
+                                        <input name="eventName" type="text" class="form-control" id="eventName"
+                                               placeholder="Event name">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="eventDate">Event Date</label>
+                                        <input name="eventDate" type="date" class="form-control" id="eventDate"
+                                               placeholder="Event Date">
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="venue">Event Venue</label>
+                                        <input name="venue" type="text" class="form-control" id="venue"
+                                               placeholder="Event venue">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="ticketPrice">Event Ticket Price</label>
+                                        <input name="ticketPrice" type="text" class="form-control" id="ticketPrice"
+                                               placeholder="Event Ticket Price">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="description">Event Description</label>
+                                        <input name="description" type="text" class="form-control" id="description"
+                                               placeholder="Event description">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="category">Event Category</label>
+                                        <input name="category" type="text" class="form-control" id="category"
+                                               placeholder="Event category">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="location">Event Location</label>
+                                        <input name="location" type="text" class="form-control" id="location"
+                                               placeholder="Event location">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="location">Event Image</label>
+                                        <input name="image" type="file" class="form-control" id="image"
+                                               placeholder="Event image">
+                                        <small th:if="${sizeError}" style="color: red;" th:text="${sizeError}"></small>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<th:block layout:fragment="script">
+    <script>
+        console.log("Home Page");
+
+
+
+
+
+
+    </script>
+</th:block>
+
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html layout:decorate="~{common/admin_layout}"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+</head>
+<body>
+
+<div class="p-3" layout:fragment="content">
+
+    <section class="content">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Update Reservation</h3>
+                        <div class="card-tools">
+
+                        </div>
+                    </div>
+
+                    <form th:action="@{~/admin/reservations/update}" method="post" th:object="${updateReservationRequest}">
+                        <div class="card-body">
+                            <div th:if="${errorMessage}" class="alert alert-danger" role="alert">
+                                <strong th:text="${errorMessage}"></strong>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <div class="form-group">
+                                            <label for="userId">Select Customer Name</label>
+                                            <input th:value="${editReservation?.reservation?.id}" name="reservationId" type="hidden">
+                                            <select th:value="${editReservation?.reservation?.user?.id}" name="userId" class="form-control" id="userId">
+                                                <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.name}"></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="eventId">Select Event Name</label>
+                                        <select th:value="${editReservation?.reservation?.event?.id}" name="eventId" class="form-control" id="eventId">
+                                            <option th:each="event : ${events}" th:value="${event.id}" th:text="${event.eventName}"></option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="numberOfTickets">Number Of Tickets</label>
+                                        <input th:value="${editReservation?.reservation?.numberOfTickets}" name="numberOfTickets" type="text" class="form-control" id="numberOfTickets"
+                                               placeholder="Number of Tickets">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="reservationTime">Reservation Time</label>
+                                        <input th:value="${editReservation?.reservation?.reservationTime}" name="reservationTime" type="datetime-local" class="form-control" id="reservationTime"
+                                               placeholder="Reservation Time">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">Update Reservation</button>
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<th:block layout:fragment="script">
+    <script>
+
+    </script>
+</th:block>
+
+</body>
+</html>

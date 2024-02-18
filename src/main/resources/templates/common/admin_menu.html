@@ -1,0 +1,89 @@
+<aside class="main-sidebar sidebar-dark-primary elevation-4" xmlns:th="http://www.w3.org/1999/xhtml">
+    <div class="sidebar">
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="image">
+                <img alt="User Image" class="img-circle elevation-2"
+                     src="/images/user.jpg">
+            </div>
+            <div class="info">
+                <a class="d-block" href="#" th:text="${session.user.name}">Test User</a>
+            </div>
+        </div>
+
+        <nav class="mt-2">
+
+            <ul class="nav nav-pills nav-sidebar flex-column" data-accordion="false" data-widget="treeview" role="menu">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+
+                <li class="nav-item has-treeview" th:if="${#strings.equals(session.user.role,'ADMIN')}">
+                    <a class="nav-link" href="#">
+                        <i class="nav-icon fas fa-copy"></i>
+                        <p>
+                            Events
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/events/add">
+                                <i class="fas fa-plus-circle nav-icon"></i>
+                                <p>New Event</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/events">
+                                <i class="fas fa-list nav-icon"></i>
+                                <p>All Events</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item has-treeview">
+                    <a class="nav-link" href="#">
+                        <i class="nav-icon fas fa-cube"></i>
+                        <p>
+                            Reservations
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/reservations/add">
+                                <i class="fas fa-plus-circle nav-icon"></i>
+                                <p>New Booking</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/reservations">
+                                <i class="fas fa-list nav-icon"></i>
+                                <p>All Bookings</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item" th:if="${#strings.equals(session.user.role,'ADMIN')}">
+                    <a class="nav-link" href="/contact">
+                        <i class="nav-icon fas fa-user"></i>
+                        <p>Contact</p>
+                    </a>
+                </li>
+
+                <li class="nav-item" th:if="${#strings.equals(session.user.role,'ADMIN')}">
+                    <a class="nav-link" href="/about">
+                        <i class="nav-icon fas fa-info-circle"></i>
+                        <p>About</p>
+                    </a>
+                </li>
+
+            </ul>
+        </nav>
+    </div>
+</aside>

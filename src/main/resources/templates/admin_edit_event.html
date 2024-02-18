@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html layout:decorate="~{common/admin_layout}"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+</head>
+<body>
+
+<div class="p-3" layout:fragment="content">
+
+    <section class="content">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Update Event</h3>
+                        <div class="card-tools">
+
+                        </div>
+                    </div>
+
+                    <form th:action="@{~/admin/events/update}" method="post" th:object="${updateEventRequest}" enctype="multipart/form-data">
+                        <div class="card-body">
+                            <div th:if="${errorMessage}" class="alert alert-danger" role="alert">
+                                <strong th:text="${errorMessage}"></strong>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="eventName">Event Name</label>
+                                        <input th:value="${editEvent?.event?.id}" name="eventId" type="hidden">
+                                        <input th:value="${editEvent?.event?.eventName}" name="eventName" type="text" class="form-control" id="eventName"
+                                               placeholder="Event name">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="eventDate">Event Date</label>
+                                        <input th:value="${editEvent?.event?.eventDate}" name="eventDate" type="date" class="form-control" id="eventDate"
+                                               placeholder="Event Date">
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="venue">Event Venue</label>
+                                        <input th:value="${editEvent?.event?.venue}" name="venue" type="text" class="form-control" id="venue"
+                                               placeholder="Event venue">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="ticketPrice">Event Ticket Price</label>
+                                        <input th:value="${editEvent?.event?.ticketPrice}" name="ticketPrice" type="text" class="form-control" id="ticketPrice"
+                                               placeholder="Event Ticket Price">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="description">Event Description</label>
+                                        <input th:value="${editEvent?.event?.description}" name="description" type="text" class="form-control" id="description"
+                                               placeholder="Event description">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="category">Event Category</label>
+                                        <input th:value="${editEvent?.event?.category}" name="category" type="text" class="form-control" id="category"
+                                               placeholder="Event category">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="location">Event Location</label>
+                                        <input th:value="${editEvent?.event?.location}" name="location" type="text" class="form-control" id="location"
+                                               placeholder="Event location">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="location">Event Image</label>
+                                        <input th:value="${editEvent?.event?.image}" name="image" type="file" class="form-control" id="image"
+                                               placeholder="Event image">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">Update Event</button>
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<th:block layout:fragment="script">
+    <script>
+
+    </script>
+</th:block>
+
+</body>
+</html>
