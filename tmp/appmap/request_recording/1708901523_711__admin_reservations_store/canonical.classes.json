@@ -1,6 +1,0 @@
-[
-  "com/qwiktix/controller/ReservationController",
-  "com/qwiktix/helpers/ValidationHelper",
-  "com/qwiktix/service/EmailService",
-  "com/qwiktix/service/ReservationService"
-]

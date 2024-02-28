@@ -1,7 +1,0 @@
-[
-  "com/qwiktix/controller/RouteController",
-  "com/qwiktix/repository/EventRepository",
-  "com/qwiktix/repository/ReservationRepository",
-  "com/qwiktix/service/EventService",
-  "com/qwiktix/service/ReservationService"
-]

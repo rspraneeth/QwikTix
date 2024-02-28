@@ -1,6 +1,0 @@
-[
-  "com/qwiktix/controller/EventController",
-  "com/qwiktix/helpers/ValidationHelper",
-  "com/qwiktix/service/EventService",
-  "com/qwiktix/service/FileServiceImpl"
-]

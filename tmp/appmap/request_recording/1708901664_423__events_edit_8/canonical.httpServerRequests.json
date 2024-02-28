@@ -1,7 +1,0 @@
-[
-  {
-    "route": "GET /events/edit/{id}",
-    "parameters": "()",
-    "status": 200
-  }
-]

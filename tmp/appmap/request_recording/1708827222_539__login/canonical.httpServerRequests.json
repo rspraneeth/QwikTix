@@ -1,7 +1,0 @@
-[
-  {
-    "route": "GET /login",
-    "parameters": "()",
-    "status": 200
-  }
-]

@@ -1,7 +1,0 @@
-[
-  {
-    "route": "GET /register",
-    "parameters": "()",
-    "status": 200
-  }
-]

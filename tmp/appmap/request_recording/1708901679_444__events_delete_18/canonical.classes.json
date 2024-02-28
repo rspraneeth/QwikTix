@@ -1,6 +1,0 @@
-[
-  "com/qwiktix/controller/EventController",
-  "com/qwiktix/repository/EventRepository",
-  "com/qwiktix/repository/WishItemRepository",
-  "com/qwiktix/service/EventService"
-]

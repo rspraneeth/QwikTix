@@ -1,6 +1,0 @@
-[
-  {
-    "caller": "GET /admin/events/add",
-    "callee": "com/qwiktix"
-  }
-]

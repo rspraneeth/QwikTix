@@ -1,7 +1,0 @@
-[
-  {
-    "route": "POST /admin/events/store",
-    "parameters": "(eventName,eventDate,venue,ticketPrice,description,category,location)",
-    "status": 302
-  }
-]
