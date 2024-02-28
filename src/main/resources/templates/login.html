@@ -27,8 +27,9 @@
             <p class="login-box-msg text-danger" th:if="${param.logout}">
                 You have been logged out.
             </p>
-
-            <p class="login-box-msg" th:if="!${param.error}">Please login to proceed</p>
+            <p class="login-box-msg" th:if="!${param.error}">
+                Please log in to proceed
+            </p>
 
             <div th:if="${successMessage}" class="alert alert-success" role="alert">
                 <strong th:text="${successMessage}"></strong>

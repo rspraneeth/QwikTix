@@ -24,8 +24,8 @@ public class DatabaseSeeder {
     @Bean
     public CommandLineRunner seedDatabase(){
         return args -> {
-            User user1 = new User("NEW ADMIN","admin@gmail.com","admin@gmail.com",passwordEncoder.encode("123456"),"12/12/1999", Role.ADMIN);
-            User user2 = new User("NEW USER","user@gmail.com","user@gmail.com", passwordEncoder.encode("123456"), "12/10/1999", Role.USER);
+            User user1 = new User("ADMIN","admin@gmail.com","admin@gmail.com",passwordEncoder.encode("123456"),"12/12/1999", Role.ADMIN);
+            User user2 = new User("USER","user@gmail.com","user@gmail.com", passwordEncoder.encode("123456"), "12/10/1999", Role.USER);
             if(userRepository.count()==0) {
                 userRepository.saveAll(List.of(user1, user2));
             }

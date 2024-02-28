@@ -1,0 +1,18 @@
+[
+  {
+    "caller": "GET /admin/reservations/add",
+    "callee": "com/qwiktix"
+  },
+  {
+    "caller": "com/qwiktix",
+    "callee": "select e1_0.id,e1_0.category,e1_0.description,e1_0.event_date,e1_0.event_name,e1_0.image_id,e1_0.is_deleted,e1_0.location,e1_0.ticket_price,e1_0.venue from event e1_0 where not(e1_0.is_deleted)"
+  },
+  {
+    "caller": "com/qwiktix",
+    "callee": "select i1_0.id,i1_0.file_name,i1_0.is_deleted,i1_0.url from image i1_0 where i1_0.id=?"
+  },
+  {
+    "caller": "com/qwiktix",
+    "callee": "select u1_0.id,u1_0.date_of_birth,u1_0.email,u1_0.is_deleted,u1_0.name,u1_0.password,u1_0.role,u1_0.username from user u1_0"
+  }
+]

@@ -6,7 +6,6 @@ import com.qwiktix.data.Image;
 import com.qwiktix.data.User;
 import com.qwiktix.data.WishItem;
 import com.qwiktix.helpers.SearchHelper;
-import com.qwiktix.interfaces.FileService;
 import com.qwiktix.repository.EventRepository;
 import com.qwiktix.repository.ImageRepository;
 import com.qwiktix.repository.WishItemRepository;
@@ -17,14 +16,12 @@ import com.qwiktix.response.AdminEventResponse;
 import com.qwiktix.response.EditEventResponse;
 import com.qwiktix.response.ViewEventResponse;
 import com.qwiktix.response.WishlistUserResponse;
-import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class EventService {
@@ -113,7 +110,12 @@ public class EventService {
                 event.setLocation(updateEventRequest.getLocation());
                 event.setTicketPrice(Double.parseDouble(updateEventRequest.getTicketPrice()));
                 event.setVenue(updateEventRequest.getVenue());
+//                String fileName = fileService.uploadFile(updateEventRequest.getImage());
+//                String url = fileService.downloadFile(fileName).toString();
+//                Image image = imageRepository.save(new Image(fileName,url));
+//                event.setImage(image);
                 eventRepository.save(event);
+                System.out.println("event updated");
             }
         } catch (Exception e) {
             throw new RuntimeException();
@@ -140,7 +142,7 @@ public class EventService {
         }
     }
 
-    public AdminEventResponse adminFilterEvents(SearchEventRequest searchEventRequest) {
+    public AdminEventResponse filterEvents(SearchEventRequest searchEventRequest) {
         try {
             List<Event> events = eventRepository.findByIsDeletedFalse();
             List<Event> filteredEvents = events.stream()
@@ -153,7 +155,7 @@ public class EventService {
 
     public void removeFromWishlist(Event event, User user) {
         try {
-            List<WishItem> wishItemList = wishItemRepository.findByEventId(event.getId());
+            List<WishItem> wishItemList = wishItemRepository.findByUserIdAndEventId(user.getId(), event.getId());
             System.out.println("++++++++++++delete++++++++++++++++++++"+new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(wishItemList));
             if (wishItemList.size()>0){
                 wishItemRepository.deleteAll(wishItemList);
@@ -162,4 +164,6 @@ public class EventService {
             throw new RuntimeException();
         }
     }
+
+
 }

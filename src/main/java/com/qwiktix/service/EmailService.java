@@ -17,8 +17,11 @@ public class EmailService {
             message.setSubject(subject);
             message.setText(text);
             javaMailSender.send(message);
+            System.out.println("mail sent, from service");
         }catch (Exception e){
+            System.out.println("Some exception mail");
             throw new RuntimeException(e);
         }
     }
+
 }

@@ -1,0 +1,7 @@
+[
+  {
+    "route": "GET /events/delete/{id}",
+    "parameters": "()",
+    "status": 302
+  }
+]

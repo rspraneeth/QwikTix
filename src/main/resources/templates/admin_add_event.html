@@ -31,14 +31,14 @@
                                     <div class="form-group">
                                         <label for="eventName">Event Name</label>
                                         <input name="eventName" type="text" class="form-control" id="eventName"
-                                               placeholder="Event name">
+                                               placeholder="Event name" th:value="${newEventRequest?.eventName}">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="eventDate">Event Date</label>
                                         <input name="eventDate" type="date" class="form-control" id="eventDate"
-                                               placeholder="Event Date">
+                                               placeholder="Event Date" th:value="${newEventRequest?.eventDate}">
                                     </div>
                                 </div>
                             </div>
@@ -49,14 +49,14 @@
                                     <div class="form-group">
                                         <label for="venue">Event Venue</label>
                                         <input name="venue" type="text" class="form-control" id="venue"
-                                               placeholder="Event venue">
+                                               placeholder="Event venue" th:value="${newEventRequest?.venue}">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="ticketPrice">Event Ticket Price</label>
                                         <input name="ticketPrice" type="text" class="form-control" id="ticketPrice"
-                                               placeholder="Event Ticket Price">
+                                               placeholder="Event Ticket Price" th:value="${newEventRequest?.ticketPrice}">
                                     </div>
                                 </div>
                             </div>
@@ -66,14 +66,14 @@
                                     <div class="form-group">
                                         <label for="description">Event Description</label>
                                         <input name="description" type="text" class="form-control" id="description"
-                                               placeholder="Event description">
+                                               placeholder="Event description" th:value="${newEventRequest?.description}">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="category">Event Category</label>
                                         <input name="category" type="text" class="form-control" id="category"
-                                               placeholder="Event category">
+                                               placeholder="Event category" th:value="${newEventRequest?.category}">
                                     </div>
                                 </div>
                             </div>
@@ -82,12 +82,12 @@
                                     <div class="form-group">
                                         <label for="location">Event Location</label>
                                         <input name="location" type="text" class="form-control" id="location"
-                                               placeholder="Event location">
+                                               placeholder="Event location" th:value="${newEventRequest?.location}">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="location">Event Image</label>
+                                        <label for="image">Event Image</label>
                                         <input name="image" type="file" class="form-control" id="image"
                                                placeholder="Event image">
                                         <small th:if="${sizeError}" style="color: red;" th:text="${sizeError}"></small>
@@ -112,11 +112,7 @@
 
 <th:block layout:fragment="script">
     <script>
-        console.log("Home Page");
-
-
-
-
+        console.log("Admin Page");
 
 
     </script>

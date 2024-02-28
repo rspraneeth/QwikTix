@@ -42,7 +42,7 @@ public class RouteController {
     private String companyEmail;
 
     @GetMapping("/")
-    public String admin_dashboard(Model model, HttpSession session) {
+    public String dashboard(Model model, HttpSession session) {
         try {
             Authentication authentication = authenticationFacade.getAuthentication();
             BaseUserPrincipal baseUserPrincipal = (BaseUserPrincipal) authentication.getPrincipal();
@@ -79,22 +79,14 @@ public class RouteController {
         return "register";
     }
 
-    @GetMapping("/admin/events/add")
-    public String admin_add_event(Model model) {
-        return "admin_add_event";
-    }
 
-    @GetMapping("/admin/events")
-    public String admin_events(Model model) {
-        model.addAttribute("adminEventResponse",eventService.adminEvent());
-        return "admin_all_events";
-    }
 
 
     @GetMapping("/contact")
     public String contact() {
         return "contact";
     }
+
     @PostMapping("/contact/send/mail")
     public String sendContactMail(@ModelAttribute("newContactMailRequest") NewContactMailRequest newContactMailRequest,RedirectAttributes redirectAttributes){
         try {
@@ -122,10 +114,11 @@ public class RouteController {
         try {
             emailService.sendEmail(companyEmail,newContactMailRequest.getSubject(),newContactMailRequest.getMessage());
             redirectAttributes.addFlashAttribute("successMessage", "Your message has been received!");
-            return "user_contact";
+            System.out.println("mail sent, from controller");
+            return "redirect:/user/contact";
         }catch (Exception e){
             redirectAttributes.addFlashAttribute("errorMessage", "Failed to send message!"+e.getMessage());
-            return "user_contact";
+            return "redirect:/user/contact";
         }
     }
 
@@ -148,7 +141,7 @@ public class RouteController {
             Event event = eventRepository.findById((long) id).orElse(null);
             eventService.addToWishlist(event,user);
             redirectAttributes.addFlashAttribute("successMessage", "Wishlist updated successfully");
-            return "redirect:/";
+            return "redirect:/user/wishlist";
         }catch (Exception e){
             redirectAttributes.addFlashAttribute("errorMessage", "Item not added!");
             return "redirect:/";
@@ -162,9 +155,9 @@ public class RouteController {
             Event event = eventRepository.findById((long) id).orElse(null);
             eventService.removeFromWishlist(event,user);
             redirectAttributes.addFlashAttribute("successMessage", "Wishlist updated successfully");
-            return "redirect:/";
+            return "redirect:/user/wishlist";
         }catch (Exception e){
-            redirectAttributes.addFlashAttribute("errorMessage", "Item not added!");
+            redirectAttributes.addFlashAttribute("errorMessage", "Item could not be removed!");
             return "redirect:/";
         }
     }

@@ -1,0 +1,7 @@
+[
+  {
+    "route": "POST /register",
+    "parameters": "(name,email,dob,password,terms)",
+    "status": 302
+  }
+]

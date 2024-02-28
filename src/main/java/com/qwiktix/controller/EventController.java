@@ -27,22 +27,40 @@ public class EventController {
     @Autowired
     private ValidationHelper validationHelper;
 
+
+    @GetMapping("/admin/events/add")
+    public String admin_add_event(Model model) {
+//        model.addAttribute("newEventRequest", new NewEventRequest());
+        return "admin_add_event";
+    }
+
+    @GetMapping("/admin/events")
+    public String admin_events(Model model) {
+        model.addAttribute("adminEventResponse",eventService.adminEvent());
+        return "admin_all_events";
+    }
+
     @PostMapping("/admin/events/store")
-    public String addNewEvent(@ModelAttribute("newEventRequest") NewEventRequest newEventRequest, RedirectAttributes redirectAttributes) {
+    public String addNewEvent(@ModelAttribute("newEventRequest") NewEventRequest newEventRequest, RedirectAttributes redirectAttributes, Model model) {
+        System.out.println(newEventRequest);
         if (newEventRequest.getTicketPrice().isEmpty() || newEventRequest.getImage().isEmpty()) {
             redirectAttributes.addFlashAttribute("errorMessage", "Data is Invalid, enter valid data");
+
+            redirectAttributes.addFlashAttribute("newEventRequest", newEventRequest);
             return "redirect:/admin/events/add";
         }
         MultipartFile imageFile = newEventRequest.getImage();
         long maxImageSize = 2 * 1024 * 1024;
         if (imageFile.getSize() > maxImageSize) {
             redirectAttributes.addFlashAttribute("sizeError", "Image size exceeds the maximum allowed size (2 MB).");
+            redirectAttributes.addFlashAttribute("newEventRequest", newEventRequest);
             return "redirect:/admin/events/add";
         }
         LocalDate eventDate = LocalDate.parse(newEventRequest.getEventDate());
         LocalDate currentDate = LocalDate.now();
         if (eventDate.isBefore(currentDate)){
             redirectAttributes.addFlashAttribute("errorMessage", "Event date must be a future date");
+            redirectAttributes.addFlashAttribute("newEventRequest", newEventRequest);
             return "redirect:/admin/events/add";
         }
 
@@ -57,19 +75,23 @@ public class EventController {
         );
         if (!validationHelper.isValidNewEventData(event)) {
             redirectAttributes.addFlashAttribute("errorMessage", "Data is Invalid, enter valid data");
+            redirectAttributes.addFlashAttribute("newEventRequest", newEventRequest);
             return "redirect:/admin/events/add";
         }
         try {
             String result = eventService.addNewEvent(event, newEventRequest);
+            System.out.println(result);
             if (result.equalsIgnoreCase("success")) {
                 redirectAttributes.addFlashAttribute("successMessage", "Event added successfully");
                 return "redirect:/admin/events";
             } else {
                 redirectAttributes.addFlashAttribute("errorMessage", "Failed to create event.Please try again"+result);
+                redirectAttributes.addFlashAttribute("newEventRequest", newEventRequest);
                 return "redirect:/admin/events/add";
             }
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("errorMessage", "Failed to create event.Please try again"+e.getMessage());
+            redirectAttributes.addFlashAttribute("newEventRequest", newEventRequest);
             return "redirect:/admin/events/add";
         }
     }
@@ -118,7 +140,7 @@ public class EventController {
             if (user.getRole().toString().equalsIgnoreCase("ADMIN")) {
                 return "redirect:/admin/events";
             } else {
-                return "redirect:/user/events";
+                return "redirect:/";
             }
         }
     }
@@ -131,14 +153,10 @@ public class EventController {
             if (user.getRole().toString().equalsIgnoreCase("ADMIN")) {
                 return "admin_edit_event";
             } else {
-                return "redirect:/user/events";
+                return "redirect:/admin/events";
             }
         } catch (Exception e) {
-            if (user.getRole().toString().equalsIgnoreCase("ADMIN")) {
-                return "redirect:/admin/events";
-            } else {
-                return "redirect:/user/events";
-            }
+            return "redirect:/admin/events";
         }
     }
 
@@ -149,16 +167,11 @@ public class EventController {
             eventService.updateEvent(updateEventRequest);
             redirectAttributes.addFlashAttribute("successMessage", "Event updated successfully");
             if (user.getRole().toString().equalsIgnoreCase("ADMIN")) {
-                return "redirect:/admin/events";
-            } else {
-                return "redirect:/user/events";
+                System.out.println("in post admin update role: "+user.getRole());
             }
+            return "redirect:/admin/events";
         } catch (Exception e) {
-            if (user.getRole().toString().equalsIgnoreCase("ADMIN")) {
-                return "redirect:/admin/events";
-            } else {
-                return "redirect:/user/events";
-            }
+            return "redirect:/admin/events";
         }
     }
 
@@ -171,23 +184,17 @@ public class EventController {
             redirectAttributes.addFlashAttribute("successMessage", "Event deleted successfully");
             if (user.getRole().toString().equalsIgnoreCase("ADMIN")) {
                 model.addAttribute("adminEventResponse", eventService.adminEvent());
-                return "redirect:/admin/events";
-            } else {
-                return "redirect:/user/events";
             }
+            return "redirect:/admin/events";
         } catch (Exception e) {
-            if (user.getRole().toString().equalsIgnoreCase("ADMIN")) {
-                return "redirect:/admin/events";
-            } else {
-                return "redirect:/user/events";
-            }
+            return "redirect:/admin/events";
         }
     }
 
     @PostMapping("/admin/dashboard/events/search")
     public String searchAdminEventDashboard(@ModelAttribute("searchEventRequest") SearchEventRequest searchEventRequest,Model model){
         try{
-            model.addAttribute("adminEventResponse",eventService.adminFilterEvents(searchEventRequest));
+            model.addAttribute("adminEventResponse",eventService.filterEvents(searchEventRequest));
             return "admin_all_events";
         }catch (Exception e){
             return "admin_all_events";
@@ -197,7 +204,7 @@ public class EventController {
     @PostMapping("/user/dashboard/events/search")
     public String searchUserEventDashboard(@ModelAttribute("searchEventRequest") SearchEventRequest searchEventRequest,Model model){
         try{
-            model.addAttribute("userEventsResponse",eventService.adminFilterEvents(searchEventRequest));
+            model.addAttribute("userEventsResponse",eventService.filterEvents(searchEventRequest));
             return "user_dashboard";
         }catch (Exception e){
             return "user_dashboard";

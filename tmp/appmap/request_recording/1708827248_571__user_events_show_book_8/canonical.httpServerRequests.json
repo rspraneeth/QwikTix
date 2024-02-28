@@ -1,0 +1,7 @@
+[
+  {
+    "route": "GET /user/events/show/book/{id}",
+    "parameters": "()",
+    "status": 200
+  }
+]

@@ -43,8 +43,11 @@
                                 <td ><span class="tag tag-success" th:text="${reservation.user.name}"></span></td>
                                 <td th:text="${reservation.reservationTime}"></td>
                                 <td>
+                                    <a class="btn btn-sm btn-success" th:href="@{/reservations/{eventId}(eventId=${reservation.id})}">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
                                     <a class="btn btn-sm btn-danger" th:href="@{/reservations/cancel/{eventId}(eventId=${reservation.id})}">
-                                        Cancel
+                                        <i class="fas fa-trash"> Cancel</i>
                                     </a>
                                 </td>
                             </tr>
@@ -63,7 +66,7 @@
 
 <th:block layout:fragment="script">
     <script>
-
+        console.log("Reservations user");
     </script>
 </th:block>
 

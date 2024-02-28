@@ -1,0 +1,6 @@
+[
+  {
+    "caller": "GET /register",
+    "callee": "com/qwiktix"
+  }
+]

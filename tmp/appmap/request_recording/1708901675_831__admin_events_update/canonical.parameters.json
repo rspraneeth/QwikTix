@@ -1,0 +1,14 @@
+[
+  "category",
+  "description",
+  "eventDate",
+  "eventId",
+  "eventName",
+  "httpSession",
+  "location",
+  "model",
+  "redirectAttributes",
+  "ticketPrice",
+  "updateEventRequest",
+  "venue"
+]

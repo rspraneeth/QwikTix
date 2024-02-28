@@ -1,0 +1,42 @@
+[
+  {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "name": "admin_add_event",
+                    "type": "function",
+                    "static": false,
+                    "location": "src/main/java/com/qwiktix/controller/EventController.java:33"
+                  }
+                ],
+                "name": "EventController",
+                "type": "class"
+              }
+            ],
+            "name": "controller",
+            "type": "package"
+          }
+        ],
+        "name": "qwiktix",
+        "type": "package"
+      }
+    ],
+    "name": "com",
+    "type": "package"
+  },
+  {
+    "type": "http",
+    "name": "HTTP server requests",
+    "children": [
+      {
+        "type": "route",
+        "name": "GET /admin/events/add"
+      }
+    ]
+  }
+]

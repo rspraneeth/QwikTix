@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html layout:decorate="~{common/user_layout}"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+</head>
+<body>
+
+<div class="p-3" layout:fragment="content">
+
+    <section class="content">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header bg-primary">
+                        <h3 class="card-title">Reservation Information</h3>
+                        <div class="card-tools">
+                        </div>
+                    </div>
+
+                    <div class="card-body p-2">
+                        <div class="row px-2 py-2">
+                            <div class="col-6">
+                                <h6>Reservation Number : #<span class="text-primary" th:text="${viewReservation.reservation.id}"></span></h6>
+                            </div>
+                            <div class="col-6">
+                                <h6>Event Name : <span class="text-primary" th:text="${viewReservation.reservation.event.eventName}"></span></h6>
+                            </div>
+                        </div>
+                        <div class="row px-2 py-2">
+                            <div class="col-6">
+                                <h6>Ticket Price : $<span class="text-primary" th:text="${viewReservation.reservation.event.ticketPrice}"></span></h6>
+                            </div>
+                            <div class="col-6">
+                                <h6>Event Date : <span class="text-primary" th:text="${viewReservation.reservation.event.eventDate}"></span></h6>
+                            </div>
+                        </div>
+                        <div class="row px-2 py-2">
+                            <div class="col-6">
+                                <h6>Event Venue : <span class="text-primary" th:text="${viewReservation.reservation.event.venue}"></span></h6>
+                            </div>
+                            <div class="col-6">
+                                <h6>Event Location : <span class="text-primary" th:text="${viewReservation.reservation.event.location}"></span></h6>
+                            </div>
+                        </div>
+                        <div class="row px-2 py-2">
+                            <div class="col-6">
+                                <h6>Event Category : <span class="text-primary" th:text="${viewReservation.reservation.event.category}"></span></h6>
+                            </div>
+                            <div class="col-6">
+                                <h6>Event Description : <span class="text-primary" th:text="${viewReservation.reservation.event.description}"></span></h6>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row px-2 py-2">
+                            <div class="col-6">
+                                <h6>Customer Name : <span class="text-primary" th:text="${viewReservation.reservation.user.name}"></span></h6>
+                            </div>
+                            <div class="col-6">
+                                <h6>Customer Email : <span class="text-primary" th:text="${viewReservation.reservation.user.email}"></span></h6>
+                            </div>
+                        </div>
+                        <div class="row px-2 py-2">
+                            <div class="col-6">
+                                <h6>Number Of Tickets : <span class="text-primary" th:text="${viewReservation.reservation.numberOfTickets}"></span></h6>
+                            </div>
+                            <div class="col-6">
+                                <h6>Reservation Time : <span class="text-primary" th:text="${viewReservation.reservation.reservationTime}"></span></h6>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<th:block layout:fragment="script">
+    <script>
+        console.log("Home Page");
+    </script>
+</th:block>
+
+</body>
+</html>

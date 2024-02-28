@@ -13,4 +13,6 @@ public interface WishItemRepository extends JpaRepository<WishItem,Long> {
     List<WishItem> findByEventId(long id);
 
     List<WishItem> findByUserIdAndEventId(Long userId, Long eventId);
+
+    boolean removeByUserIdAndEventId(Long userId, Long eventId);
 }

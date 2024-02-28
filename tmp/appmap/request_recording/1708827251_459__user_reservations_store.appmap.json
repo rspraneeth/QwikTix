@@ -1,0 +1,475 @@
+{
+  "events": [
+    {
+      "event": "call",
+      "http_server_request": {
+        "headers": {
+          "sec-fetch-mode": "navigate",
+          "content-length": "63",
+          "referer": "http://localhost:9090/user/events/show/book/8",
+          "sec-fetch-site": "same-origin",
+          "accept-language": "en-US,en",
+          "cookie": "JSESSIONID=36353796892225EB25902C2F75691BAF",
+          "origin": "http://localhost:9090",
+          "dnt": "1",
+          "sec-fetch-user": "?1",
+          "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
+          "sec-gpc": "1",
+          "sec-ch-ua": "\"Chromium\";v=\"122\", \"Not(A:Brand\";v=\"24\", \"Brave\";v=\"122\"",
+          "sec-ch-ua-mobile": "?0",
+          "sec-ch-ua-platform": "\"Windows\"",
+          "host": "localhost:9090",
+          "upgrade-insecure-requests": "1",
+          "connection": "keep-alive",
+          "content-type": "application/x-www-form-urlencoded",
+          "cache-control": "max-age=0",
+          "accept-encoding": "gzip, deflate, br",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+          "sec-fetch-dest": "document"
+        },
+        "normalized_path_info": "/user/reservations/store",
+        "path_info": "/user/reservations/store",
+        "protocol": "HTTP/1.1",
+        "request_method": "POST"
+      },
+      "id": 1,
+      "message": [
+        {
+          "class": "java.lang.String",
+          "kind": "req",
+          "name": "userId",
+          "object_id": 878671391,
+          "value": "4"
+        },
+        {
+          "class": "java.lang.String",
+          "kind": "req",
+          "name": "eventId",
+          "object_id": 404798727,
+          "value": "8"
+        },
+        {
+          "class": "java.lang.String",
+          "kind": "req",
+          "name": "numberOfTickets",
+          "object_id": 913030215,
+          "value": "5"
+        },
+        {
+          "class": "java.lang.String",
+          "kind": "req",
+          "name": "reservationTime",
+          "object_id": 1434584737,
+          "value": "2024-03-17"
+        }
+      ],
+      "thread_id": 43
+    },
+    {
+      "defined_class": "com.qwiktix.controller.ReservationController",
+      "event": "call",
+      "id": 2,
+      "lineno": 89,
+      "method_id": "user_post_reservation",
+      "parameters": [
+        {
+          "class": "com.qwiktix.request.NewReservationRequest",
+          "kind": "req",
+          "name": "newReservationRequest",
+          "object_id": 1337667650,
+          "value": "com.qwiktix.request.NewReservationRequest@4fbb3042"
+        },
+        {
+          "class": "org.springframework.web.servlet.mvc.support.RedirectAttributesModelMap",
+          "kind": "req",
+          "name": "redirectAttributes",
+          "object_id": 338697023,
+          "value": "{}"
+        },
+        {
+          "class": "org.apache.catalina.session.StandardSessionFacade",
+          "kind": "req",
+          "name": "httpSession",
+          "object_id": 194888350,
+          "value": "org.apache.catalina.session.StandardSessionFacade@b9dc29e"
+        }
+      ],
+      "path": "src/main/java/com/qwiktix/controller/ReservationController.java",
+      "receiver": {
+        "class": "com.qwiktix.controller.ReservationController",
+        "object_id": 1521846657,
+        "value": "com.qwiktix.controller.ReservationController@5ab58981"
+      },
+      "static": false,
+      "thread_id": 43
+    },
+    {
+      "defined_class": "com.qwiktix.helpers.ValidationHelper",
+      "event": "call",
+      "id": 3,
+      "lineno": 39,
+      "method_id": "isValidNewReservationData",
+      "parameters": [
+        {
+          "class": "com.qwiktix.request.NewReservationRequest",
+          "kind": "req",
+          "name": "newReservationRequest",
+          "object_id": 1337667650,
+          "value": "com.qwiktix.request.NewReservationRequest@4fbb3042"
+        }
+      ],
+      "path": "src/main/java/com/qwiktix/helpers/ValidationHelper.java",
+      "receiver": {
+        "class": "com.qwiktix.helpers.ValidationHelper",
+        "object_id": 668744892,
+        "value": "com.qwiktix.helpers.ValidationHelper@27dc3cbc"
+      },
+      "static": false,
+      "thread_id": 43
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 4,
+      "parent_id": 3,
+      "return_value": {
+        "class": "java.lang.Boolean",
+        "object_id": 702867672,
+        "value": "true"
+      },
+      "thread_id": 43
+    },
+    {
+      "event": "call",
+      "id": 5,
+      "sql_query": {
+        "database_type": "MySQL",
+        "sql": "select u1_0.id,u1_0.date_of_birth,u1_0.email,u1_0.is_deleted,u1_0.name,u1_0.password,u1_0.role,u1_0.username from user u1_0 where u1_0.id=?"
+      },
+      "thread_id": 43
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 6,
+      "parent_id": 5,
+      "thread_id": 43
+    },
+    {
+      "event": "call",
+      "id": 7,
+      "sql_query": {
+        "database_type": "MySQL",
+        "sql": "select e1_0.id,e1_0.category,e1_0.description,e1_0.event_date,e1_0.event_name,i1_0.id,i1_0.file_name,i1_0.is_deleted,i1_0.url,e1_0.is_deleted,e1_0.location,e1_0.ticket_price,e1_0.venue from event e1_0 left join image i1_0 on i1_0.id=e1_0.image_id where e1_0.id=?"
+      },
+      "thread_id": 43
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 8,
+      "parent_id": 7,
+      "thread_id": 43
+    },
+    {
+      "defined_class": "com.qwiktix.service.ReservationService",
+      "event": "call",
+      "id": 9,
+      "lineno": 42,
+      "method_id": "addNewReservation",
+      "parameters": [
+        {
+          "class": "com.qwiktix.data.Reservation",
+          "kind": "req",
+          "name": "reservation",
+          "object_id": 1457232300,
+          "value": "com.qwiktix.data.Reservation@56db99ac"
+        }
+      ],
+      "path": "src/main/java/com/qwiktix/service/ReservationService.java",
+      "receiver": {
+        "class": "com.qwiktix.service.ReservationService",
+        "object_id": 539754556,
+        "value": "com.qwiktix.service.ReservationService@202c003c"
+      },
+      "static": false,
+      "thread_id": 43
+    },
+    {
+      "event": "call",
+      "id": 10,
+      "sql_query": {
+        "database_type": "MySQL",
+        "sql": "select next_val as id_val from reservation_sequence for update"
+      },
+      "thread_id": 43
+    },
+    {
+      "elapsed": 0.00009966,
+      "event": "return",
+      "id": 11,
+      "parent_id": 10,
+      "thread_id": 43
+    },
+    {
+      "event": "call",
+      "id": 12,
+      "sql_query": {
+        "database_type": "MySQL",
+        "sql": "update reservation_sequence set next_val= ? where next_val=?"
+      },
+      "thread_id": 43
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 13,
+      "parent_id": 12,
+      "thread_id": 43
+    },
+    {
+      "event": "call",
+      "id": 14,
+      "sql_query": {
+        "database_type": "MySQL",
+        "sql": "insert into reservation (event_id,is_deleted,number_of_tickets,reservation_time,user_id,id) values (?,?,?,?,?,?)"
+      },
+      "thread_id": 43
+    },
+    {
+      "elapsed": 0.000098,
+      "event": "return",
+      "id": 15,
+      "parent_id": 14,
+      "thread_id": 43
+    },
+    {
+      "defined_class": "com.qwiktix.service.EmailService",
+      "event": "call",
+      "id": 16,
+      "lineno": 15,
+      "method_id": "sendEmail",
+      "parameters": [
+        {
+          "class": "java.lang.String",
+          "kind": "req",
+          "name": "to",
+          "object_id": 436978473,
+          "value": "rspraneeth.rsp@gmail.com"
+        },
+        {
+          "class": "java.lang.String",
+          "kind": "req",
+          "name": "subject",
+          "object_id": 847604131,
+          "value": "Booking Success"
+        },
+        {
+          "class": "java.lang.String",
+          "kind": "req",
+          "name": "text",
+          "object_id": 1796756683,
+          "value": "________________________________________________________\nEvent Name : Holi Festival\nVenue : Riverside Park\nLocation : SFO\nDate : 2024-03-17\nTotal : 175.0\n________________________________________________________\n"
+        }
+      ],
+      "path": "src/main/java/com/qwiktix/service/EmailService.java",
+      "receiver": {
+        "class": "com.qwiktix.service.EmailService",
+        "object_id": 2030646142,
+        "value": "com.qwiktix.service.EmailService@7909337e"
+      },
+      "static": false,
+      "thread_id": 43
+    },
+    {
+      "elapsed": 0.2518002,
+      "event": "return",
+      "id": 17,
+      "parent_id": 16,
+      "thread_id": 43
+    },
+    {
+      "elapsed": 0.2862927,
+      "event": "return",
+      "id": 18,
+      "parent_id": 9,
+      "return_value": {
+        "class": "java.lang.String",
+        "object_id": 288224595,
+        "value": "success"
+      },
+      "thread_id": 43
+    },
+    {
+      "elapsed": 0.28937885,
+      "event": "return",
+      "id": 19,
+      "parent_id": 2,
+      "return_value": {
+        "class": "java.lang.String",
+        "object_id": 994078410,
+        "value": "redirect:/"
+      },
+      "thread_id": 43
+    },
+    {
+      "elapsed": 0.29196382,
+      "event": "return",
+      "http_server_response": {
+        "headers": {
+          "X-Frame-Options": "DENY",
+          "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate",
+          "X-Content-Type-Options": "nosniff",
+          "Pragma": "no-cache",
+          "Expires": "0",
+          "X-XSS-Protection": "0",
+          "Location": "http://localhost:9090/"
+        },
+        "status": 302
+      },
+      "id": 20,
+      "parent_id": 1,
+      "thread_id": 43
+    }
+  ],
+  "version": "1.2",
+  "metadata": {
+    "name": "POST /user/reservations/store (302) - 18:14:11.459",
+    "app": "QwikTix",
+    "language": {
+      "name": "java",
+      "version": "17.0.5+9-LTS-191",
+      "engine": "Java HotSpot(TM) 64-Bit Server VM"
+    },
+    "client": {
+      "name": "appmap-java",
+      "url": "https://github.com/appland/appmap-java"
+    },
+    "recorder": {
+      "name": "request_recording",
+      "type": "requests"
+    },
+    "recording": {},
+    "git": {
+      "repository": "https://github.com/rspraneeth/QwikTix.git",
+      "branch": "main",
+      "commit": "dbee3977bde1b5c69e7b5949f2a1af260b93a4d7"
+    }
+  },
+  "classMap": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "name": "sendEmail",
+                      "type": "function",
+                      "static": false,
+                      "location": "src/main/java/com/qwiktix/service/EmailService.java:15"
+                    }
+                  ],
+                  "name": "EmailService",
+                  "type": "class"
+                },
+                {
+                  "children": [
+                    {
+                      "name": "addNewReservation",
+                      "type": "function",
+                      "static": false,
+                      "location": "src/main/java/com/qwiktix/service/ReservationService.java:42"
+                    }
+                  ],
+                  "name": "ReservationService",
+                  "type": "class"
+                }
+              ],
+              "name": "service",
+              "type": "package"
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "name": "user_post_reservation",
+                      "type": "function",
+                      "static": false,
+                      "location": "src/main/java/com/qwiktix/controller/ReservationController.java:89"
+                    }
+                  ],
+                  "name": "ReservationController",
+                  "type": "class"
+                }
+              ],
+              "name": "controller",
+              "type": "package"
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "name": "isValidNewReservationData",
+                      "type": "function",
+                      "static": false,
+                      "location": "src/main/java/com/qwiktix/helpers/ValidationHelper.java:39"
+                    }
+                  ],
+                  "name": "ValidationHelper",
+                  "type": "class"
+                }
+              ],
+              "name": "helpers",
+              "type": "package"
+            }
+          ],
+          "name": "qwiktix",
+          "type": "package"
+        }
+      ],
+      "name": "com",
+      "type": "package"
+    },
+    {
+      "type": "http",
+      "name": "HTTP server requests",
+      "children": [
+        {
+          "type": "route",
+          "name": "POST /user/reservations/store"
+        }
+      ]
+    },
+    {
+      "type": "database",
+      "name": "Database",
+      "children": [
+        {
+          "type": "query",
+          "name": "select u1_0.id,u1_0.date_of_birth,u1_0.email,u1_0.is_deleted,u1_0.name,u1_0.password,u1_0.role,u1_0.username from user u1_0 where u1_0.id=?"
+        },
+        {
+          "type": "query",
+          "name": "select e1_0.id,e1_0.category,e1_0.description,e1_0.event_date,e1_0.event_name,i1_0.id,i1_0.file_name,i1_0.is_deleted,i1_0.url,e1_0.is_deleted,e1_0.location,e1_0.ticket_price,e1_0.venue from event e1_0 left join image i1_0 on i1_0.id=e1_0.image_id where e1_0.id=?"
+        },
+        {
+          "type": "query",
+          "name": "select next_val as id_val from reservation_sequence for update"
+        },
+        {
+          "type": "query",
+          "name": "update reservation_sequence set next_val= ? where next_val=?"
+        },
+        {
+          "type": "query",
+          "name": "insert into reservation (event_id,is_deleted,number_of_tickets,reservation_time,user_id,id) values (?,?,?,?,?,?)"
+        }
+      ]
+    }
+  ]
+}

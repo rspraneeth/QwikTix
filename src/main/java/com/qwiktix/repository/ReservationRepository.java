@@ -1,8 +1,6 @@
 package com.qwiktix.repository;
 
-import com.qwiktix.data.Event;
 import com.qwiktix.data.Reservation;
-import com.qwiktix.response.UserReservationsResponse;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -16,6 +14,8 @@ public interface ReservationRepository extends JpaRepository<Reservation,Long> {
     BigDecimal getTotalReservationAmount();
 
     List<Reservation> findByUserId(Long userId);
+
+    List<Reservation> findByUserIdAndIsDeletedFalse(Long userId);
 
     List<Reservation> findByIsDeletedFalse();
 }

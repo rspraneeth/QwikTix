@@ -33,8 +33,8 @@ public class WebSecurityConfig {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .requestMatchers("/login", "/register", "/css/**", "/js/**", "/images/**", "/webjars/**", "/favicon" +
-                        ".ico")
+                .requestMatchers("/login", "/register","/css/**", "/js/**", "/images/**", "/webjars/**", "/favicon" + ".ico", "/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs", "/v3/api-docs/**", "/swagger-resources", "/swagger-resources/**", "/configuration/ui", "/configuration/security")
+//                .requestMatchers("/login", "/register")
                 .permitAll()
                 .anyRequest().authenticated()
                 .and()
@@ -53,7 +53,7 @@ public class WebSecurityConfig {
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
         return (web) -> web.ignoring().requestMatchers("/static/**", "/favicon.ico", "/assets/**", "/css/**", "/img" +
-                "/**", "/js**", "/admin/**", "/webjars/**", "/templates/**");
+                "/**", "/js**", "/admin/**", "/webjars/**", "/templates/**", "/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs", "/v3/api-docs/**");
     }
 
 }

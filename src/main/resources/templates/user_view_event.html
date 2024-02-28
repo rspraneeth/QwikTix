@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html layout:decorate="~{common/admin_layout}"
+<html layout:decorate="~{common/user_layout}"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -21,6 +21,9 @@
                     </div>
 
                     <div class="card-body p-2">
+                        <div class="event-image">
+                            <img th:src="${viewEvent.event.image.url}" style="height:300px;width:100%"/>
+                        </div>
                         <div class="row px-2 py-2">
                             <div class="col-12">
                                 <h6>Event Name : <span class="text-primary" th:text="${viewEvent.event.eventName}"></span></h6>

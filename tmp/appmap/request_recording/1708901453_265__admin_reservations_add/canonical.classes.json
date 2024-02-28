@@ -1,0 +1,4 @@
+[
+  "com/qwiktix/controller/ReservationController",
+  "com/qwiktix/repository/EventRepository"
+]

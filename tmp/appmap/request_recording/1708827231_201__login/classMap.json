@@ -1,0 +1,60 @@
+[
+  {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "name": "loadUserByUsername",
+                    "type": "function",
+                    "static": false,
+                    "location": "src/main/java/com/qwiktix/service/UserService.java:25"
+                  }
+                ],
+                "name": "UserService",
+                "type": "class"
+              }
+            ],
+            "name": "service",
+            "type": "package"
+          },
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "name": "findByUsername",
+                    "type": "function",
+                    "static": false,
+                    "location": "src/main/java/com/qwiktix/repository/UserRepository.java:-1"
+                  }
+                ],
+                "name": "UserRepository",
+                "type": "class"
+              }
+            ],
+            "name": "repository",
+            "type": "package"
+          }
+        ],
+        "name": "qwiktix",
+        "type": "package"
+      }
+    ],
+    "name": "com",
+    "type": "package"
+  },
+  {
+    "type": "database",
+    "name": "Database",
+    "children": [
+      {
+        "type": "query",
+        "name": "select u1_0.id,u1_0.date_of_birth,u1_0.email,u1_0.is_deleted,u1_0.name,u1_0.password,u1_0.role,u1_0.username from user u1_0 where u1_0.username=?"
+      }
+    ]
+  }
+]

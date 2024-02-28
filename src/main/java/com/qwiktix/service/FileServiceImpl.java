@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Date;
@@ -33,6 +34,7 @@ public class FileServiceImpl implements FileService {
 
     @Override
     public String uploadFile(MultipartFile multipartFile) throws FileUploadException, IOException {
+
         File file = new File(multipartFile.getOriginalFilename());
         try (FileOutputStream fileOutputStream = new FileOutputStream(file)){
             fileOutputStream.write(multipartFile.getBytes());
@@ -45,8 +47,8 @@ public class FileServiceImpl implements FileService {
         metadata.setContentLength(file.length());
         request.setMetadata(metadata);
         s3Client.putObject(request);
-        file.delete();
-
+        boolean isD = file.delete();
+        System.out.println("is deleted? "+isD);
         return fileName;
     }
 
@@ -67,11 +69,17 @@ public class FileServiceImpl implements FileService {
             Path pathObject = Paths.get(fileName);
             UrlResource resource = new UrlResource(pathObject.toUri());
 
+//            GeneratePresignedUrlRequest generatePresignedUrlRequest = new GeneratePresignedUrlRequest(bucketName, fileName)
+//                    .withExpiration(new Date(System.currentTimeMillis() + 3600000)); // 1 hour expiration
+//            URL presignedUrl = s3Client.generatePresignedUrl(generatePresignedUrlRequest);
+
             if (resource.exists() || resource.isReadable()) {
                 return String.format("https://%s.s3.amazonaws.com/%s", bucketName, fileName);
             } else {
                 throw new FileDownloadException("Could not find the file!");
             }
+
+
         }
     }
 

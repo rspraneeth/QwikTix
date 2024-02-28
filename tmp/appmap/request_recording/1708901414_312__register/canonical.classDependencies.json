@@ -1,0 +1,22 @@
+[
+  {
+    "caller": "POST /register",
+    "callee": "com/qwiktix"
+  },
+  {
+    "caller": "com/qwiktix",
+    "callee": "insert into user (date_of_birth,email,is_deleted,name,password,role,username,id) values (?,?,?,?,?,?,?,?)"
+  },
+  {
+    "caller": "com/qwiktix",
+    "callee": "select next_val as id_val from user_sequence for update"
+  },
+  {
+    "caller": "com/qwiktix",
+    "callee": "select u1_0.id,u1_0.date_of_birth,u1_0.email,u1_0.is_deleted,u1_0.name,u1_0.password,u1_0.role,u1_0.username from user u1_0 where u1_0.name=?"
+  },
+  {
+    "caller": "com/qwiktix",
+    "callee": "update user_sequence set next_val= ? where next_val=?"
+  }
+]

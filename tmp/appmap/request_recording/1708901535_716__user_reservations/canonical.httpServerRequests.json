@@ -1,0 +1,7 @@
+[
+  {
+    "route": "GET /user/reservations",
+    "parameters": "()",
+    "status": 200
+  }
+]

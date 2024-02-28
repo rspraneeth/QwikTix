@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html layout:decorate="~{common/admin_layout}"
+<html layout:decorate="~{common/user_layout}"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -30,7 +30,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="numberOfTickets">Enter Number Of Tickets</label>
-                                        <input name="userId" th:value="${session.user.id}" type="hidden" class="form-control" id="userIdu">
+                                        <input name="userId" th:value="${session.user.id}" type="hidden" class="form-control" id="userId">
                                         <input name="eventId" th:value="${viewEvent.event.id}" type="hidden" class="form-control" id="eventId">
                                         <input name="numberOfTickets" type="text" class="form-control"
                                                id="numberOfTickets"

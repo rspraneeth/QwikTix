@@ -1,0 +1,7 @@
+[
+  {
+    "route": "GET /admin/reservations/add",
+    "parameters": "()",
+    "status": 200
+  }
+]

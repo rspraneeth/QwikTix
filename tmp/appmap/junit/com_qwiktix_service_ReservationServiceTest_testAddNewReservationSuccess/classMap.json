@@ -1,0 +1,44 @@
+[
+  {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "name": "testAddNewReservationSuccess",
+                    "type": "function",
+                    "static": false,
+                    "location": "src/test/java/com/qwiktix/service/ReservationServiceTest.java:60"
+                  }
+                ],
+                "name": "ReservationServiceTest",
+                "type": "class"
+              },
+              {
+                "children": [
+                  {
+                    "name": "addNewReservation",
+                    "type": "function",
+                    "static": false,
+                    "location": "src/main/java/com/qwiktix/service/ReservationService.java:42"
+                  }
+                ],
+                "name": "ReservationService",
+                "type": "class"
+              }
+            ],
+            "name": "service",
+            "type": "package"
+          }
+        ],
+        "name": "qwiktix",
+        "type": "package"
+      }
+    ],
+    "name": "com",
+    "type": "package"
+  }
+]

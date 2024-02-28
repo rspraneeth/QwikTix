@@ -5,6 +5,8 @@ import com.qwiktix.enums.Role;
 import com.qwiktix.helpers.ValidationHelper;
 import com.qwiktix.request.RegistrationRequest;
 import com.qwiktix.service.UserService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -16,6 +18,7 @@ import java.time.LocalDate;
 import java.time.Period;
 
 @Controller
+@Tag(name = "User Api", description = "Api end point for user registration")
 public class UserController {
     @Autowired
     private UserService userService;
@@ -24,6 +27,7 @@ public class UserController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @Operation(summary = "POST operation", description = "End point registers new users.")
     @PostMapping("/register")
     public String registerUser(@ModelAttribute("registrationRequest") RegistrationRequest registrationRequest, RedirectAttributes redirectAttributes) {
         User user = new User(
@@ -44,6 +48,12 @@ public class UserController {
             return "redirect:/register";
         }
 
+        String name = registrationRequest.getName();
+        if("exist".equalsIgnoreCase(userService.findUserByName(name))){
+            redirectAttributes.addFlashAttribute("errorMessage", "User with same name already exist! please use another name.");
+            return "redirect:/register";
+        }
+
         LocalDate dob = LocalDate.parse(registrationRequest.getDob());
         LocalDate currentDate = LocalDate.now();
         int age = Period.between(dob, currentDate).getYears();
@@ -55,7 +65,7 @@ public class UserController {
         try {
             String result = userService.registerNewUser(user);
             if (result.equalsIgnoreCase("success")) {
-                redirectAttributes.addFlashAttribute("successMessage", "Account Created Successfully!Login to proceed");
+                redirectAttributes.addFlashAttribute("successMessage", "Account Created Successfully! Login to proceed");
                 return "redirect:/login";
             } else {
                 redirectAttributes.addFlashAttribute("errorMessage", "Failed to register.Please try again");

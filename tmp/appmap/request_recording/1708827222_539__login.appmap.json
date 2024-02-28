@@ -1,0 +1,151 @@
+{
+  "events": [
+    {
+      "event": "call",
+      "http_server_request": {
+        "headers": {
+          "sec-fetch-mode": "navigate",
+          "sec-fetch-site": "none",
+          "accept-language": "en-US,en",
+          "cookie": "JSESSIONID=08A3621106647512FA86D6F63B866E9F",
+          "dnt": "1",
+          "sec-fetch-user": "?1",
+          "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
+          "sec-gpc": "1",
+          "sec-ch-ua": "\"Chromium\";v=\"122\", \"Not(A:Brand\";v=\"24\", \"Brave\";v=\"122\"",
+          "sec-ch-ua-mobile": "?0",
+          "sec-ch-ua-platform": "\"Windows\"",
+          "host": "localhost:9090",
+          "upgrade-insecure-requests": "1",
+          "connection": "keep-alive",
+          "accept-encoding": "gzip, deflate, br",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+          "sec-fetch-dest": "document"
+        },
+        "normalized_path_info": "/login",
+        "path_info": "/login",
+        "protocol": "HTTP/1.1",
+        "request_method": "GET"
+      },
+      "id": 1,
+      "thread_id": 41
+    },
+    {
+      "defined_class": "com.qwiktix.controller.RouteController",
+      "event": "call",
+      "id": 2,
+      "lineno": 73,
+      "method_id": "login",
+      "path": "src/main/java/com/qwiktix/controller/RouteController.java",
+      "receiver": {
+        "class": "com.qwiktix.controller.RouteController",
+        "object_id": 1671318654,
+        "value": "com.qwiktix.controller.RouteController@639e4c7e"
+      },
+      "static": false,
+      "thread_id": 41
+    },
+    {
+      "elapsed": 0.00552532,
+      "event": "return",
+      "id": 3,
+      "parent_id": 2,
+      "return_value": {
+        "class": "java.lang.String",
+        "object_id": 1494701568,
+        "value": "login"
+      },
+      "thread_id": 41
+    },
+    {
+      "elapsed": 0.14676224,
+      "event": "return",
+      "http_server_response": {
+        "headers": {
+          "X-Frame-Options": "DENY",
+          "Transfer-Encoding": "chunked",
+          "Keep-Alive": "timeout=60",
+          "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate",
+          "X-Content-Type-Options": "nosniff",
+          "Connection": "keep-alive",
+          "Pragma": "no-cache",
+          "Expires": "0",
+          "X-XSS-Protection": "0",
+          "Content-Language": "en-US",
+          "Date": "Sun, 25 Feb 2024 02:13:44 GMT",
+          "Content-Type": "text/html;charset=UTF-8"
+        },
+        "status": 200
+      },
+      "id": 4,
+      "parent_id": 1,
+      "thread_id": 41
+    }
+  ],
+  "version": "1.2",
+  "metadata": {
+    "name": "GET /login (200) - 18:13:42.539",
+    "app": "QwikTix",
+    "language": {
+      "name": "java",
+      "version": "17.0.5+9-LTS-191",
+      "engine": "Java HotSpot(TM) 64-Bit Server VM"
+    },
+    "client": {
+      "name": "appmap-java",
+      "url": "https://github.com/appland/appmap-java"
+    },
+    "recorder": {
+      "name": "request_recording",
+      "type": "requests"
+    },
+    "recording": {},
+    "git": {
+      "repository": "https://github.com/rspraneeth/QwikTix.git",
+      "branch": "main",
+      "commit": "dbee3977bde1b5c69e7b5949f2a1af260b93a4d7"
+    }
+  },
+  "classMap": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "name": "login",
+                      "type": "function",
+                      "static": false,
+                      "location": "src/main/java/com/qwiktix/controller/RouteController.java:73"
+                    }
+                  ],
+                  "name": "RouteController",
+                  "type": "class"
+                }
+              ],
+              "name": "controller",
+              "type": "package"
+            }
+          ],
+          "name": "qwiktix",
+          "type": "package"
+        }
+      ],
+      "name": "com",
+      "type": "package"
+    },
+    {
+      "type": "http",
+      "name": "HTTP server requests",
+      "children": [
+        {
+          "type": "route",
+          "name": "GET /login"
+        }
+      ]
+    }
+  ]
+}

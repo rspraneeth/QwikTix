@@ -1,0 +1,74 @@
+[
+  {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "name": "show_book_event",
+                    "type": "function",
+                    "static": false,
+                    "location": "src/main/java/com/qwiktix/controller/EventController.java:110"
+                  }
+                ],
+                "name": "EventController",
+                "type": "class"
+              }
+            ],
+            "name": "controller",
+            "type": "package"
+          },
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "name": "viewEvent",
+                    "type": "function",
+                    "static": false,
+                    "location": "src/main/java/com/qwiktix/service/EventService.java:65"
+                  }
+                ],
+                "name": "EventService",
+                "type": "class"
+              }
+            ],
+            "name": "service",
+            "type": "package"
+          }
+        ],
+        "name": "qwiktix",
+        "type": "package"
+      }
+    ],
+    "name": "com",
+    "type": "package"
+  },
+  {
+    "type": "http",
+    "name": "HTTP server requests",
+    "children": [
+      {
+        "type": "route",
+        "name": "GET /user/events/show/book/{id}"
+      }
+    ]
+  },
+  {
+    "type": "database",
+    "name": "Database",
+    "children": [
+      {
+        "type": "query",
+        "name": "select e1_0.id,e1_0.category,e1_0.description,e1_0.event_date,e1_0.event_name,e1_0.image_id,e1_0.is_deleted,e1_0.location,e1_0.ticket_price,e1_0.venue from event e1_0"
+      },
+      {
+        "type": "query",
+        "name": "select i1_0.id,i1_0.file_name,i1_0.is_deleted,i1_0.url from image i1_0 where i1_0.id=?"
+      }
+    ]
+  }
+]

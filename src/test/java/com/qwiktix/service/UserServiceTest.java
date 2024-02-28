@@ -34,7 +34,7 @@ public class UserServiceTest {
     public void testLoadUserByUsername() {
 
         String username = "test";
-        User mockUser = new User("test", username, username,username,username, Role.USER);
+        User mockUser = new User("test", username, "test@test.com","password", "1998/02/02", Role.USER);
         Mockito.when(userRepository.findByUsername(username)).thenReturn(mockUser);
 
         UserDetails userDetails = userService.loadUserByUsername(username);

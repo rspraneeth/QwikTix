@@ -1,0 +1,8 @@
+[
+  "insert into event (category,description,event_date,event_name,image_id,is_deleted,location,ticket_price,venue,id) values (?,?,?,?,?,?,?,?,?,?)",
+  "insert into image (file_name,is_deleted,url,id) values (?,?,?,?)",
+  "select next_val as id_val from event_sequence for update",
+  "select next_val as id_val from image_sequence for update",
+  "update event_sequence set next_val= ? where next_val=?",
+  "update image_sequence set next_val= ? where next_val=?"
+]

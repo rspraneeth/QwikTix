@@ -1,0 +1,141 @@
+{
+  "events": [
+    {
+      "defined_class": "com.qwiktix.service.ReservationServiceTest",
+      "event": "call",
+      "id": 1,
+      "lineno": 60,
+      "method_id": "testAddNewReservationSuccess",
+      "path": "src/test/java/com/qwiktix/service/ReservationServiceTest.java",
+      "receiver": {
+        "class": "com.qwiktix.service.ReservationServiceTest",
+        "object_id": 920914400,
+        "value": "com.qwiktix.service.ReservationServiceTest@36e409e0"
+      },
+      "static": false,
+      "thread_id": 1
+    },
+    {
+      "defined_class": "com.qwiktix.service.ReservationService",
+      "event": "call",
+      "id": 2,
+      "lineno": 42,
+      "method_id": "addNewReservation",
+      "parameters": [
+        {
+          "class": "com.qwiktix.data.Reservation",
+          "kind": "req",
+          "name": "reservation",
+          "object_id": 219286908,
+          "value": "com.qwiktix.data.Reservation@d120d7c"
+        }
+      ],
+      "path": "src/main/java/com/qwiktix/service/ReservationService.java",
+      "receiver": {
+        "class": "com.qwiktix.service.ReservationService",
+        "object_id": 1592228783,
+        "value": "com.qwiktix.service.ReservationService@5ee77baf"
+      },
+      "static": false,
+      "thread_id": 1
+    },
+    {
+      "elapsed": 0.06587954,
+      "event": "return",
+      "id": 3,
+      "parent_id": 2,
+      "return_value": {
+        "class": "java.lang.String",
+        "object_id": 1864931112,
+        "value": "failed"
+      },
+      "thread_id": 1
+    },
+    {
+      "elapsed": 0.07442161,
+      "event": "return",
+      "id": 4,
+      "parent_id": 1,
+      "thread_id": 1
+    }
+  ],
+  "version": "1.2",
+  "metadata": {
+    "name": "Reservation service test add new reservation success",
+    "app": "QwikTix",
+    "language": {
+      "name": "java",
+      "version": "17.0.5+9-LTS-191",
+      "engine": "Java HotSpot(TM) 64-Bit Server VM"
+    },
+    "client": {
+      "name": "appmap-java",
+      "url": "https://github.com/appland/appmap-java"
+    },
+    "recorder": {
+      "name": "junit",
+      "type": "tests"
+    },
+    "recording": {
+      "defined_class": "com.qwiktix.service.ReservationServiceTest",
+      "method_id": "testAddNewReservationSuccess"
+    },
+    "git": {
+      "repository": "https://github.com/rspraneeth/QwikTix.git",
+      "branch": "main",
+      "commit": "dbee3977bde1b5c69e7b5949f2a1af260b93a4d7"
+    },
+    "source_location": "src/test/java/com/qwiktix/service/ReservationServiceTest.java:60",
+    "frameworks": [
+      {
+        "name": "JUnit",
+        "version": "5"
+      }
+    ],
+    "test_status": "succeeded"
+  },
+  "classMap": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "name": "testAddNewReservationSuccess",
+                      "type": "function",
+                      "static": false,
+                      "location": "src/test/java/com/qwiktix/service/ReservationServiceTest.java:60"
+                    }
+                  ],
+                  "name": "ReservationServiceTest",
+                  "type": "class"
+                },
+                {
+                  "children": [
+                    {
+                      "name": "addNewReservation",
+                      "type": "function",
+                      "static": false,
+                      "location": "src/main/java/com/qwiktix/service/ReservationService.java:42"
+                    }
+                  ],
+                  "name": "ReservationService",
+                  "type": "class"
+                }
+              ],
+              "name": "service",
+              "type": "package"
+            }
+          ],
+          "name": "qwiktix",
+          "type": "package"
+        }
+      ],
+      "name": "com",
+      "type": "package"
+    }
+  ]
+}

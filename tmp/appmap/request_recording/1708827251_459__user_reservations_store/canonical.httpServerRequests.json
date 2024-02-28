@@ -1,0 +1,7 @@
+[
+  {
+    "route": "POST /user/reservations/store",
+    "parameters": "(userId,eventId,numberOfTickets,reservationTime)",
+    "status": 302
+  }
+]

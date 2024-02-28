@@ -1,0 +1,450 @@
+{
+  "events": [
+    {
+      "event": "call",
+      "http_server_request": {
+        "headers": {
+          "sec-fetch-mode": "navigate",
+          "referer": "http://localhost:9090/",
+          "sec-fetch-site": "same-origin",
+          "accept-language": "en-US,en",
+          "cookie": "JSESSIONID=16487FE48885F0E64E36712FB5629E0C",
+          "dnt": "1",
+          "sec-fetch-user": "?1",
+          "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
+          "sec-gpc": "1",
+          "sec-ch-ua": "\"Chromium\";v=\"122\", \"Not(A:Brand\";v=\"24\", \"Brave\";v=\"122\"",
+          "sec-ch-ua-mobile": "?0",
+          "sec-ch-ua-platform": "\"Windows\"",
+          "host": "localhost:9090",
+          "upgrade-insecure-requests": "1",
+          "connection": "keep-alive",
+          "accept-encoding": "gzip, deflate, br",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+          "sec-fetch-dest": "document"
+        },
+        "normalized_path_info": "/admin/reservations",
+        "path_info": "/admin/reservations",
+        "protocol": "HTTP/1.1",
+        "request_method": "GET"
+      },
+      "id": 1,
+      "thread_id": 41
+    },
+    {
+      "defined_class": "com.qwiktix.controller.ReservationController",
+      "event": "call",
+      "id": 2,
+      "lineno": 131,
+      "method_id": "admin_reservations",
+      "parameters": [
+        {
+          "class": "org.springframework.validation.support.BindingAwareModelMap",
+          "kind": "req",
+          "name": "model",
+          "object_id": 756099242,
+          "value": "{}"
+        },
+        {
+          "class": "org.apache.catalina.session.StandardSessionFacade",
+          "kind": "req",
+          "name": "httpSession",
+          "object_id": 1854105979,
+          "value": "org.apache.catalina.session.StandardSessionFacade@6e83697b"
+        }
+      ],
+      "path": "src/main/java/com/qwiktix/controller/ReservationController.java",
+      "receiver": {
+        "class": "com.qwiktix.controller.ReservationController",
+        "object_id": 1022577478,
+        "value": "com.qwiktix.controller.ReservationController@3cf34b46"
+      },
+      "static": false,
+      "thread_id": 41
+    },
+    {
+      "defined_class": "com.qwiktix.service.ReservationService",
+      "event": "call",
+      "id": 3,
+      "lineno": 32,
+      "method_id": "adminReservations",
+      "path": "src/main/java/com/qwiktix/service/ReservationService.java",
+      "receiver": {
+        "class": "com.qwiktix.service.ReservationService",
+        "object_id": 1225072049,
+        "value": "com.qwiktix.service.ReservationService@49051db1"
+      },
+      "static": false,
+      "thread_id": 41
+    },
+    {
+      "event": "call",
+      "id": 4,
+      "sql_query": {
+        "database_type": "MySQL",
+        "sql": "select coalesce(sum((r1_0.number_of_tickets*e1_0.ticket_price)),0) from reservation r1_0 join event e1_0 on e1_0.id=r1_0.event_id where r1_0.is_deleted=0"
+      },
+      "thread_id": 41
+    },
+    {
+      "elapsed": 0.00011592,
+      "event": "return",
+      "id": 5,
+      "parent_id": 4,
+      "thread_id": 41
+    },
+    {
+      "defined_class": "com.qwiktix.repository.ReservationRepository",
+      "event": "call",
+      "id": 6,
+      "lineno": -1,
+      "method_id": "findByIsDeletedFalse",
+      "path": "src/main/java/com/qwiktix/repository/ReservationRepository.java",
+      "receiver": {
+        "class": "jdk.proxy3.$Proxy199",
+        "object_id": 945410085,
+        "value": "org.springframework.data.jpa.repository.support.SimpleJpaRepository@760b0544"
+      },
+      "static": false,
+      "thread_id": 41
+    },
+    {
+      "event": "call",
+      "id": 7,
+      "sql_query": {
+        "database_type": "MySQL",
+        "sql": "select r1_0.id,r1_0.event_id,r1_0.is_deleted,r1_0.number_of_tickets,r1_0.reservation_time,r1_0.user_id from reservation r1_0 where not(r1_0.is_deleted)"
+      },
+      "thread_id": 41
+    },
+    {
+      "elapsed": 0.00009928,
+      "event": "return",
+      "id": 8,
+      "parent_id": 7,
+      "thread_id": 41
+    },
+    {
+      "event": "call",
+      "id": 9,
+      "sql_query": {
+        "database_type": "MySQL",
+        "sql": "select e1_0.id,e1_0.category,e1_0.description,e1_0.event_date,e1_0.event_name,i1_0.id,i1_0.file_name,i1_0.is_deleted,i1_0.url,e1_0.is_deleted,e1_0.location,e1_0.ticket_price,e1_0.venue from event e1_0 left join image i1_0 on i1_0.id=e1_0.image_id where e1_0.id=?"
+      },
+      "thread_id": 41
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 10,
+      "parent_id": 9,
+      "thread_id": 41
+    },
+    {
+      "event": "call",
+      "id": 11,
+      "sql_query": {
+        "database_type": "MySQL",
+        "sql": "select u1_0.id,u1_0.date_of_birth,u1_0.email,u1_0.is_deleted,u1_0.name,u1_0.password,u1_0.role,u1_0.username from user u1_0 where u1_0.id=?"
+      },
+      "thread_id": 41
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 12,
+      "parent_id": 11,
+      "thread_id": 41
+    },
+    {
+      "event": "call",
+      "id": 13,
+      "sql_query": {
+        "database_type": "MySQL",
+        "sql": "select e1_0.id,e1_0.category,e1_0.description,e1_0.event_date,e1_0.event_name,i1_0.id,i1_0.file_name,i1_0.is_deleted,i1_0.url,e1_0.is_deleted,e1_0.location,e1_0.ticket_price,e1_0.venue from event e1_0 left join image i1_0 on i1_0.id=e1_0.image_id where e1_0.id=?"
+      },
+      "thread_id": 41
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 14,
+      "parent_id": 13,
+      "thread_id": 41
+    },
+    {
+      "event": "call",
+      "id": 15,
+      "sql_query": {
+        "database_type": "MySQL",
+        "sql": "select e1_0.id,e1_0.category,e1_0.description,e1_0.event_date,e1_0.event_name,i1_0.id,i1_0.file_name,i1_0.is_deleted,i1_0.url,e1_0.is_deleted,e1_0.location,e1_0.ticket_price,e1_0.venue from event e1_0 left join image i1_0 on i1_0.id=e1_0.image_id where e1_0.id=?"
+      },
+      "thread_id": 41
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 16,
+      "parent_id": 15,
+      "thread_id": 41
+    },
+    {
+      "event": "call",
+      "id": 17,
+      "sql_query": {
+        "database_type": "MySQL",
+        "sql": "select u1_0.id,u1_0.date_of_birth,u1_0.email,u1_0.is_deleted,u1_0.name,u1_0.password,u1_0.role,u1_0.username from user u1_0 where u1_0.id=?"
+      },
+      "thread_id": 41
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 18,
+      "parent_id": 17,
+      "thread_id": 41
+    },
+    {
+      "event": "call",
+      "id": 19,
+      "sql_query": {
+        "database_type": "MySQL",
+        "sql": "select e1_0.id,e1_0.category,e1_0.description,e1_0.event_date,e1_0.event_name,i1_0.id,i1_0.file_name,i1_0.is_deleted,i1_0.url,e1_0.is_deleted,e1_0.location,e1_0.ticket_price,e1_0.venue from event e1_0 left join image i1_0 on i1_0.id=e1_0.image_id where e1_0.id=?"
+      },
+      "thread_id": 41
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 20,
+      "parent_id": 19,
+      "thread_id": 41
+    },
+    {
+      "event": "call",
+      "id": 21,
+      "sql_query": {
+        "database_type": "MySQL",
+        "sql": "select e1_0.id,e1_0.category,e1_0.description,e1_0.event_date,e1_0.event_name,i1_0.id,i1_0.file_name,i1_0.is_deleted,i1_0.url,e1_0.is_deleted,e1_0.location,e1_0.ticket_price,e1_0.venue from event e1_0 left join image i1_0 on i1_0.id=e1_0.image_id where e1_0.id=?"
+      },
+      "thread_id": 41
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 22,
+      "parent_id": 21,
+      "thread_id": 41
+    },
+    {
+      "event": "call",
+      "id": 23,
+      "sql_query": {
+        "database_type": "MySQL",
+        "sql": "select e1_0.id,e1_0.category,e1_0.description,e1_0.event_date,e1_0.event_name,i1_0.id,i1_0.file_name,i1_0.is_deleted,i1_0.url,e1_0.is_deleted,e1_0.location,e1_0.ticket_price,e1_0.venue from event e1_0 left join image i1_0 on i1_0.id=e1_0.image_id where e1_0.id=?"
+      },
+      "thread_id": 41
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 24,
+      "parent_id": 23,
+      "thread_id": 41
+    },
+    {
+      "event": "call",
+      "id": 25,
+      "sql_query": {
+        "database_type": "MySQL",
+        "sql": "select u1_0.id,u1_0.date_of_birth,u1_0.email,u1_0.is_deleted,u1_0.name,u1_0.password,u1_0.role,u1_0.username from user u1_0 where u1_0.id=?"
+      },
+      "thread_id": 41
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 26,
+      "parent_id": 25,
+      "thread_id": 41
+    },
+    {
+      "elapsed": 0.00211196,
+      "event": "return",
+      "id": 27,
+      "parent_id": 6,
+      "return_value": {
+        "class": "java.util.ArrayList",
+        "object_id": 1770551051,
+        "value": "[com.qwiktix.data.Reservation@705fd8da, com.qwiktix.data.Reservation@136bae77, com.qwiktix.data.Reservation@15310822, com.qwiktix.data.Reservation@73091e47, com.qwiktix.data.Reservation@f19c65a, com.qwiktix.data.Reservation@4aa8e3e6, com.qwiktix.data.Reservation@61532094, com.qwiktix.data.Reservation@6317035b]"
+      },
+      "thread_id": 41
+    },
+    {
+      "elapsed": 0.0026292,
+      "event": "return",
+      "id": 28,
+      "parent_id": 3,
+      "return_value": {
+        "class": "com.qwiktix.response.AdminReservationResponse",
+        "object_id": 1445908497,
+        "value": "com.qwiktix.response.AdminReservationResponse@562ed011"
+      },
+      "thread_id": 41
+    },
+    {
+      "elapsed": 0.0026292,
+      "event": "return",
+      "id": 29,
+      "parent_id": 2,
+      "return_value": {
+        "class": "java.lang.String",
+        "object_id": 225971284,
+        "value": "admin_all_reservations"
+      },
+      "thread_id": 41
+    },
+    {
+      "elapsed": 0.00821722,
+      "event": "return",
+      "http_server_response": {
+        "headers": {
+          "Transfer-Encoding": "chunked",
+          "Keep-Alive": "timeout=60",
+          "Connection": "keep-alive",
+          "Content-Language": "en-US",
+          "Date": "Sun, 25 Feb 2024 22:52:47 GMT",
+          "Content-Type": "text/html;charset=UTF-8"
+        },
+        "status": 200
+      },
+      "id": 30,
+      "parent_id": 1,
+      "thread_id": 41
+    }
+  ],
+  "version": "1.2",
+  "metadata": {
+    "name": "GET /admin/reservations (200) - 14:52:47.742",
+    "app": "QwikTix",
+    "language": {
+      "name": "java",
+      "version": "17.0.5+9-LTS-191",
+      "engine": "Java HotSpot(TM) 64-Bit Server VM"
+    },
+    "client": {
+      "name": "appmap-java",
+      "url": "https://github.com/appland/appmap-java"
+    },
+    "recorder": {
+      "name": "request_recording",
+      "type": "requests"
+    },
+    "recording": {},
+    "git": {
+      "repository": "https://github.com/rspraneeth/QwikTix.git",
+      "branch": "main",
+      "commit": "dbee3977bde1b5c69e7b5949f2a1af260b93a4d7"
+    }
+  },
+  "classMap": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "name": "adminReservations",
+                      "type": "function",
+                      "static": false,
+                      "location": "src/main/java/com/qwiktix/service/ReservationService.java:32"
+                    }
+                  ],
+                  "name": "ReservationService",
+                  "type": "class"
+                }
+              ],
+              "name": "service",
+              "type": "package"
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "name": "findByIsDeletedFalse",
+                      "type": "function",
+                      "static": false,
+                      "location": "src/main/java/com/qwiktix/repository/ReservationRepository.java:-1"
+                    }
+                  ],
+                  "name": "ReservationRepository",
+                  "type": "class"
+                }
+              ],
+              "name": "repository",
+              "type": "package"
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "name": "admin_reservations",
+                      "type": "function",
+                      "static": false,
+                      "location": "src/main/java/com/qwiktix/controller/ReservationController.java:131"
+                    }
+                  ],
+                  "name": "ReservationController",
+                  "type": "class"
+                }
+              ],
+              "name": "controller",
+              "type": "package"
+            }
+          ],
+          "name": "qwiktix",
+          "type": "package"
+        }
+      ],
+      "name": "com",
+      "type": "package"
+    },
+    {
+      "type": "http",
+      "name": "HTTP server requests",
+      "children": [
+        {
+          "type": "route",
+          "name": "GET /admin/reservations"
+        }
+      ]
+    },
+    {
+      "type": "database",
+      "name": "Database",
+      "children": [
+        {
+          "type": "query",
+          "name": "select coalesce(sum((r1_0.number_of_tickets*e1_0.ticket_price)),0) from reservation r1_0 join event e1_0 on e1_0.id=r1_0.event_id where r1_0.is_deleted=0"
+        },
+        {
+          "type": "query",
+          "name": "select r1_0.id,r1_0.event_id,r1_0.is_deleted,r1_0.number_of_tickets,r1_0.reservation_time,r1_0.user_id from reservation r1_0 where not(r1_0.is_deleted)"
+        },
+        {
+          "type": "query",
+          "name": "select e1_0.id,e1_0.category,e1_0.description,e1_0.event_date,e1_0.event_name,i1_0.id,i1_0.file_name,i1_0.is_deleted,i1_0.url,e1_0.is_deleted,e1_0.location,e1_0.ticket_price,e1_0.venue from event e1_0 left join image i1_0 on i1_0.id=e1_0.image_id where e1_0.id=?"
+        },
+        {
+          "type": "query",
+          "name": "select u1_0.id,u1_0.date_of_birth,u1_0.email,u1_0.is_deleted,u1_0.name,u1_0.password,u1_0.role,u1_0.username from user u1_0 where u1_0.id=?"
+        }
+      ]
+    }
+  ]
+}

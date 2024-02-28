@@ -1,0 +1,17 @@
+[
+  {
+    "route": "GET https://storagersp.s3.us-east-2.amazonaws.com/",
+    "parameters": "(list-type,fetch-owner)",
+    "status": 200
+  },
+  {
+    "route": "GET https://storagersp.s3.us-east-2.amazonaws.com/1708901639335-holi.jpg",
+    "parameters": "()",
+    "status": 200
+  },
+  {
+    "route": "PUT https://storagersp.s3.us-east-2.amazonaws.com/1708901639335-holi.jpg",
+    "parameters": "()",
+    "status": 200
+  }
+]

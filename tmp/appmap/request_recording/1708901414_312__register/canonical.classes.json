@@ -1,0 +1,6 @@
+[
+  "com/qwiktix/controller/UserController",
+  "com/qwiktix/helpers/ValidationHelper",
+  "com/qwiktix/repository/UserRepository",
+  "com/qwiktix/service/UserService"
+]

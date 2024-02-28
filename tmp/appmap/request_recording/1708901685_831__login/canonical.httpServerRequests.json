@@ -1,0 +1,7 @@
+[
+  {
+    "route": "GET /login",
+    "parameters": "(logout)",
+    "status": 200
+  }
+]
