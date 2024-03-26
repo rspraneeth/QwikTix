@@ -36,7 +36,7 @@ public class ReservationController {
     public String admin_add_reservation(Model model,HttpSession httpSession) {
         User user = (User)httpSession.getAttribute("user");
         model.addAttribute("users",userRepository.findAll());
-        model.addAttribute("events",eventRepository.findByIsDeletedFalse());
+        model.addAttribute("events",eventRepository.findFutureEvents());
         return "admin_add_reservation";
     }
 
@@ -84,10 +84,22 @@ public class ReservationController {
     }
 
 
+    @GetMapping("/user/reservations/add")
+    public String user_add_reservation(Model model,HttpSession httpSession) {
+        User user = (User)httpSession.getAttribute("user");
+        model.addAttribute("users",userRepository.findAll());
+        model.addAttribute("events",eventRepository.findFutureEvents());
+        return "user_add_reservation";
+    }
+
     @PostMapping("/user/reservations/store")
     public String user_post_reservation(@ModelAttribute("newReservationRequest") NewReservationRequest newReservationRequest, RedirectAttributes redirectAttributes,HttpSession httpSession){
         if (!validationHelper.isValidNewReservationData(newReservationRequest)){
             redirectAttributes.addFlashAttribute("errorMessage", "Data is Invalid, enter valid data");
+            return "redirect:/user/events/show/book/"+newReservationRequest.getEventId();
+        }
+        if (newReservationRequest.getNumberOfTickets() <= 0){
+            redirectAttributes.addFlashAttribute("errorMessage", "No of tickets should be more than 0");
             return "redirect:/user/events/show/book/"+newReservationRequest.getEventId();
         }
         try {
@@ -107,7 +119,7 @@ public class ReservationController {
             System.out.println(new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(reservation));
             if (result.equalsIgnoreCase("success")) {
                 redirectAttributes.addFlashAttribute("successMessage", "Reservation added successfully");
-                return "redirect:/";
+                return "redirect:/user/reservations";
             }else{
                 redirectAttributes.addFlashAttribute("errorMessage", "Failed to create reservation.Please try again");
                 return "redirect:/";
@@ -122,14 +134,16 @@ public class ReservationController {
     @GetMapping("/user/reservations")
     public String user_reservations(Model model, HttpSession httpSession) {
         User user = (User)httpSession.getAttribute("user");
-        model.addAttribute("userReservationsResponse",reservationService.getUserReservations(user.getId()));
+        model.addAttribute("userReservationsResponse",reservationService.getUserFutureReservations(user.getId()));
+        model.addAttribute("userPastReservationsResponse",reservationService.getUserPastReservations(user.getId()));
         return "user_all_reservations";
     }
 
     @GetMapping("/admin/reservations")
     public String admin_reservations(Model model,HttpSession httpSession) {
         User user = (User)httpSession.getAttribute("user");
-        model.addAttribute("adminReservationResponse",reservationService.adminReservations());
+        model.addAttribute("adminReservationResponse",reservationService.adminReservationsFuture());
+        model.addAttribute("adminPastReservationResponse",reservationService.adminReservationsPast());
         return "admin_all_reservations";
     }
 

@@ -38,7 +38,7 @@
                                     <div class="form-group">
                                         <label for="eventDate">Event Date</label>
                                         <input name="eventDate" type="date" class="form-control" id="eventDate"
-                                               placeholder="Event Date" th:value="${newEventRequest?.eventDate}">
+                                               placeholder="Event Date" th:value="${newEventRequest?.eventDate}" required>
                                     </div>
                                 </div>
                             </div>
@@ -55,8 +55,8 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="ticketPrice">Event Ticket Price</label>
-                                        <input name="ticketPrice" type="text" class="form-control" id="ticketPrice"
-                                               placeholder="Event Ticket Price" th:value="${newEventRequest?.ticketPrice}">
+                                        <input name="ticketPrice" type="number" class="form-control" id="ticketPrice"
+                                               placeholder="Event Ticket Price" th:value="${newEventRequest?.ticketPrice}" min="0" max="100">
                                     </div>
                                 </div>
                             </div>

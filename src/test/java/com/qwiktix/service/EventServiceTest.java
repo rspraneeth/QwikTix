@@ -53,7 +53,7 @@ class EventServiceTest {
     @Test
     void testAdminEvent() {
         List<Event> events = new ArrayList<>();
-        when(eventRepository.findByIsDeletedFalse()).thenReturn(events);
+        when(eventRepository.findFutureEvents()).thenReturn(events);
         AdminEventResponse response = eventService.adminEvent();
         assertEquals(events, response.getEvents());
         assertEquals(events.size(), response.getNumberOfEvents());
@@ -116,7 +116,7 @@ class EventServiceTest {
     void testAdminFilterEvents() {
         SearchEventRequest searchEventRequest = new SearchEventRequest();
         List<Event> events = new ArrayList<>();
-        when(eventRepository.findByIsDeletedFalse()).thenReturn(events);
+        when(eventRepository.findFutureEvents()).thenReturn(events);
         when(searchHelper.searchEvent(any(), any())).thenReturn(true);
         AdminEventResponse response = eventService.filterEvents(searchEventRequest);
         assertEquals(events, response.getEvents());

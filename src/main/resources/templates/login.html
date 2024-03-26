@@ -33,7 +33,9 @@
 
             <div th:if="${successMessage}" class="alert alert-success" role="alert">
                 <strong th:text="${successMessage}"></strong>
-            </div>
+            </div><div th:if="${errorMessage}" class="alert alert-danger" role="alert">
+            <strong th:text="${errorMessage}"></strong>
+        </div>
 
             <form method="post" th:action="@{~/login}">
                 <div class="input-group mb-3">
@@ -52,7 +54,13 @@
                         <button class="btn btn-primary btn-block" type="submit">Sign In</button>
                     </div>
                 </div>
+
             </form>
+            <div class="row">
+                <p class="mb-0 col-8">
+                    <a href="/user/forgot-password" class="text-center">I forgot my password</a>
+                </p>
+            </div>
         </div>
     </div>
 </div>

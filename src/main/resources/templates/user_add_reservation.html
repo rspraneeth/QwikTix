@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html layout:decorate="~{common/admin_layout}"
+<html layout:decorate="~{common/user_layout}"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -21,7 +21,7 @@
                         </div>
                     </div>
 
-                    <form th:action="@{~/admin/reservations/store}" method="post" th:object="${newReservationRequest}">
+                    <form th:action="@{~/user/reservations/store}" method="post" th:object="${newReservationRequest}">
                         <div class="card-body">
                             <div th:if="${errorMessage}" class="alert alert-danger" role="alert">
                                 <strong th:text="${errorMessage}"></strong>
@@ -57,7 +57,7 @@
                                         <input th:value="2024-01-10" name="reservationTime" type="hidden" class="form-control" id="reservationTime"
                                                placeholder="Reservation Time">
                                         <input name="numberOfTickets" type="number" class="form-control" id="numberOfTickets"
-                                               placeholder="Number of Tickets" min="0" max="10">
+                                               placeholder="Number of Tickets"  min="0" max="10">
                                     </div>
                                 </div>
                             </div>

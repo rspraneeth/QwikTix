@@ -20,6 +20,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,12 +40,15 @@ public class EventService {
 
     public AdminEventResponse adminEvent() {
         try {
-            List<Event> events = eventRepository.findByIsDeletedFalse();
+//            List<Event> events = eventRepository.findByIsDeletedFalse();
+            List<Event> events = eventRepository.findFutureEvents();
             return new AdminEventResponse(events, events.size());
         } catch (Exception e) {
             return new AdminEventResponse(new ArrayList<>(), 0);
         }
     }
+
+
 
     @Transactional
     public String addNewEvent(Event event, NewEventRequest newEventRequest) {
@@ -144,7 +148,7 @@ public class EventService {
 
     public AdminEventResponse filterEvents(SearchEventRequest searchEventRequest) {
         try {
-            List<Event> events = eventRepository.findByIsDeletedFalse();
+            List<Event> events = eventRepository.findFutureEvents();
             List<Event> filteredEvents = events.stream()
                     .filter(event -> searchHelper.searchEvent(event, searchEventRequest)).toList();
             return new AdminEventResponse(filteredEvents, filteredEvents.size());

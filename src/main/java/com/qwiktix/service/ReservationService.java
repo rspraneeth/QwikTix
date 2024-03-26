@@ -14,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,9 +31,29 @@ public class ReservationService {
     private EventRepository eventRepository;
     public AdminReservationResponse adminReservations() {
         try {
-            BigDecimal sumOfAmounts = reservationRepository.getTotalReservationAmount();
+            BigDecimal sumOfAmounts = reservationRepository.getTotalAppProfitAmount().setScale(2, RoundingMode.DOWN);
             List<Reservation> reservations = reservationRepository.findByIsDeletedFalse();
             return new AdminReservationResponse(reservations,sumOfAmounts.doubleValue(),reservations.size());
+        }catch (Exception e){
+            return new AdminReservationResponse(new ArrayList<>(),0,0);
+        }
+    }
+
+    public AdminReservationResponse adminReservationsFuture() {
+        try {
+            List<Reservation> reservations = reservationRepository.futureReservations();
+            System.out.println(reservations);
+            return new AdminReservationResponse(reservations,0,reservations.size());
+        }catch (Exception e){
+            return new AdminReservationResponse(new ArrayList<>(),0,0);
+        }
+    }
+
+    public AdminReservationResponse adminReservationsPast() {
+        try {
+            List<Reservation> reservations = reservationRepository.pastReservations();
+            System.out.println(reservations);
+            return new AdminReservationResponse(reservations,0,reservations.size());
         }catch (Exception e){
             return new AdminReservationResponse(new ArrayList<>(),0,0);
         }
@@ -57,6 +79,22 @@ public class ReservationService {
     public UserReservationsResponse getUserReservations(Long userId){
         try {
             return new UserReservationsResponse(reservationRepository.findByUserId(userId));
+        }catch (Exception e){
+            return new UserReservationsResponse();
+        }
+    }
+
+    public UserReservationsResponse getUserFutureReservations(Long userId){
+        try {
+            return new UserReservationsResponse(reservationRepository.futureReservationsByUserId(userId));
+        }catch (Exception e){
+            return new UserReservationsResponse();
+        }
+    }
+
+    public UserReservationsResponse getUserPastReservations(Long userId){
+        try {
+            return new UserReservationsResponse(reservationRepository.pastReservationsByUserId(userId));
         }catch (Exception e){
             return new UserReservationsResponse();
         }

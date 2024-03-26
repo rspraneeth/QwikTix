@@ -22,6 +22,7 @@ import java.time.LocalDate;
 
 @Controller
 public class EventController {
+
     @Autowired
     private EventService eventService;
     @Autowired
@@ -49,6 +50,14 @@ public class EventController {
             redirectAttributes.addFlashAttribute("newEventRequest", newEventRequest);
             return "redirect:/admin/events/add";
         }
+
+        if (Double.parseDouble(newEventRequest.getTicketPrice()) <= 0) {
+            redirectAttributes.addFlashAttribute("errorMessage", "Ticket price should be more than 0 and must be a number");
+
+            redirectAttributes.addFlashAttribute("newEventRequest", newEventRequest);
+            return "redirect:/admin/events/add";
+        }
+
         MultipartFile imageFile = newEventRequest.getImage();
         long maxImageSize = 2 * 1024 * 1024;
         if (imageFile.getSize() > maxImageSize) {
@@ -163,6 +172,19 @@ public class EventController {
     @PostMapping("/admin/events/update")
     public String updateEvent(@ModelAttribute("updateEventRequest") UpdateEventRequest updateEventRequest, Model model, HttpSession httpSession,RedirectAttributes redirectAttributes) {
         User user = (User) httpSession.getAttribute("user");
+        LocalDate eventDate = LocalDate.parse(updateEventRequest.getEventDate());
+        LocalDate currentDate = LocalDate.now();
+        if (eventDate.isBefore(currentDate)){
+            redirectAttributes.addFlashAttribute("errorMessage", "Event date must be a future date");
+//            redirectAttributes.addFlashAttribute("updateEventRequest", updateEventRequest);
+            return "redirect:/events/edit/"+updateEventRequest.getEventId();
+        }
+
+        if (Double.parseDouble(updateEventRequest.getTicketPrice()) < 0){
+            redirectAttributes.addFlashAttribute("errorMessage", "Ticket price should be more than 0 and must be a number");
+            return "redirect:/events/edit/"+updateEventRequest.getEventId();
+        }
+
         try {
             eventService.updateEvent(updateEventRequest);
             redirectAttributes.addFlashAttribute("successMessage", "Event updated successfully");
@@ -171,7 +193,8 @@ public class EventController {
             }
             return "redirect:/admin/events";
         } catch (Exception e) {
-            return "redirect:/admin/events";
+            redirectAttributes.addFlashAttribute("errorMessage", "Entered data is invalid, Please check");
+            return "redirect:/events/edit/"+updateEventRequest.getEventId();
         }
     }
 

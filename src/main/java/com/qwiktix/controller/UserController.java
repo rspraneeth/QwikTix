@@ -43,7 +43,7 @@ public class UserController {
             return "redirect:/register";
         }
 
-        if (registrationRequest.getPassword().length()<5){
+        if (registrationRequest.getPassword().length()<6){
             redirectAttributes.addFlashAttribute("errorMessage", "Password must be at least 5 characters!");
             return "redirect:/register";
         }

@@ -33,8 +33,7 @@ public class WebSecurityConfig {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .requestMatchers("/login", "/register","/css/**", "/js/**", "/images/**", "/webjars/**", "/favicon" + ".ico", "/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs", "/v3/api-docs/**", "/swagger-resources", "/swagger-resources/**", "/configuration/ui", "/configuration/security")
-//                .requestMatchers("/login", "/register")
+                .requestMatchers("/login", "/register", "/user/forgot-password", "/forgot-password", "/user/otp", "/user/validate/otp", "/user/new-password", "/css/**", "/js/**", "/images/**", "/webjars/**", "/favicon" + ".ico", "/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs", "/v3/api-docs/**", "/swagger-resources", "/swagger-resources/**", "/configuration/ui", "/configuration/security")
                 .permitAll()
                 .anyRequest().authenticated()
                 .and()
